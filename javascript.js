@@ -70,7 +70,8 @@ function displayGraph() {
             stacked: false,
             title: {
                 display: true,
-                text: 'Studienarbeit Statistiken'
+                text: 'Studienarbeit Statistiken',
+                fontSize: 32
             },
             scales: {
                 xAxes: [{
@@ -86,11 +87,15 @@ function displayGraph() {
                     id: 'y-axis-1',
                     ticks: {
                         beginAtZero: true,
-                        precision: 0
+                        precision: 0,
+                        fontColor: 'rgb(255, 99, 132)'
                     },
                     scaleLabel: {
                         display: true,
-                        labelString: '# of Words'
+                        labelString: '# of Words',
+                        fontSize: 20,
+                        fontStyle: "bold",
+                        fontColor: 'rgb(255, 99, 132)'
                     }
                 }, {
                     type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
@@ -103,7 +108,9 @@ function displayGraph() {
                     },
                     scaleLabel: {
                         display: true,
-                        labelString: '# of Sources'
+                        labelString: '# of Sources',
+                        fontSize: 20,
+                        fontStyle: "bold"
                     },
 
                     // grid line settings
