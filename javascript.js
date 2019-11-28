@@ -4,6 +4,7 @@ var lineChartData = {
         label: 'Word count',
         borderColor: 'rgb(255, 99, 132)',
         backgroundColor: 'rgb(255, 99, 132)',
+        lineTension: 0,
         fill: false,
         data: [],
         yAxisID: 'y-axis-1',
@@ -11,6 +12,7 @@ var lineChartData = {
         label: 'Sources in literatur.bib',
         borderColor: 'rgb(54, 162, 235)',
         backgroundColor: 'rgb(54, 162, 235)',
+        lineTension: 0,
         fill: false,
         data: [],
         yAxisID: 'y-axis-2'
@@ -18,6 +20,7 @@ var lineChartData = {
         label: 'Used sources',
         borderColor: 'rgb(75, 192, 192)',
         backgroundColor: 'rgb(75, 192, 192)',
+        lineTension: 0,
         fill: false,
         data: [],
         yAxisID: 'y-axis-2'
@@ -28,7 +31,7 @@ var lineChartData = {
 var client = new XMLHttpRequest();
 client.open('GET', 'data/stats.csv');
 client.onreadystatechange = function () {
-    console.log(client.responseText);
+   // console.log(client.responseText);
     if (client.responseText != "") {
         var rows = client.responseText.split(/\r?\n/);
         var lables = [];
@@ -52,12 +55,12 @@ client.onreadystatechange = function () {
         lineChartData.datasets[0].data = words;
         lineChartData.datasets[1].data = totalSources;
         lineChartData.datasets[2].data = usedSources;
+        displayGraph();
     }
 }
 client.send();
 
-
-window.onload = function () {
+function displayGraph() {
     var ctx = document.getElementById('canvas').getContext('2d');
     window.myLine = Chart.Line(ctx, {
         data: lineChartData,
@@ -70,24 +73,38 @@ window.onload = function () {
                 text: 'Studienarbeit Statistiken'
             },
             scales: {
+                xAxes: [{
+                    type: 'time',
+                    time: {
+                        unit: 'day'
+                    }
+                }],
                 yAxes: [{
-					type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+                    type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
                     display: true,
                     position: 'left',
                     id: 'y-axis-1',
-					scaleLabel: {
-						display: true,
-						labelString: '# of Words'
-					}
+                    ticks: {
+                        beginAtZero: true,
+                        precision: 0
+                    },
+                    scaleLabel: {
+                        display: true,
+                        labelString: '# of Words'
+                    }
                 }, {
                     type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
                     display: true,
                     position: 'right',
                     id: 'y-axis-2',
-					scaleLabel: {
-						display: true,
-						labelString: '# of Sources'
-					},
+                    ticks: {
+                        beginAtZero: true,
+                        precision: 0
+                    },
+                    scaleLabel: {
+                        display: true,
+                        labelString: '# of Sources'
+                    },
 
                     // grid line settings
                     gridLines: {
@@ -97,4 +114,4 @@ window.onload = function () {
             }
         }
     });
-};
+}
