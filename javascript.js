@@ -44,8 +44,8 @@ client.onreadystatechange = function () {
             if (points.length != 7) {
                 //console.log("Warning line " + i + " only has " + points.length + " points");
             } else {
-				if(i == 0 || rows[i-1][1] != rows[i][1] || rows[i-1][3] != rows[i][3]
-				|| rows[i-1][4] != rows[i][4] || rows[i-1][5] != rows[i][5] || rows[i-1][6] != rows[i][6]){
+				if(i == 0 || rows[i-1][3] != rows[i][3] || rows[i-1][4] != rows[i][4]
+				|| rows[i-1][5] != rows[i][5] || rows[i-1][6] != rows[i][6]){
 					lables.push(new Date(points[1] * 1000));
 					pages.push(points[3]);
 					words.push(points[4]);
