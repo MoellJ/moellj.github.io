@@ -44,7 +44,7 @@ client.onreadystatechange = function () {
             if (points.length != 7) {
                 //console.log("Warning line " + i + " only has " + points.length + " points");
             } else {
-				if(pages.length == 0 || pages[pages.length-1] != points][3] || words[words.length-1] != points[4]
+				if(pages.length == 0 || pages[pages.length-1] != points[3] || words[words.length-1] != points[4]
 				|| totalSources[totalSources.length-1] != points[5] || usedSources[usedSources.length-1] != points[6]){
 					lables.push(new Date(points[1] * 1000));
 					pages.push(points[3]);
