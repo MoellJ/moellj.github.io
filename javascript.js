@@ -24,7 +24,16 @@ var lineChartData = {
         fill: false,
         data: [],
         yAxisID: 'y-axis-2'
-    }]
+    },
+        {
+            label: 'Total pages',
+            borderColor: 'rgb(255,140,0)',
+            backgroundColor: 'rgb(255,140,0)',
+            lineTension: 0,
+            fill: false,
+            data: [],
+            yAxisID: 'y-axis-2'
+        }]
 };
 
 
@@ -58,6 +67,7 @@ client.onreadystatechange = function () {
         lineChartData.datasets[0].data = words;
         lineChartData.datasets[1].data = totalSources;
         lineChartData.datasets[2].data = usedSources;
+        lineChartData.datasets[3].data = pages;
         displayGraph();
     }
 }
@@ -111,7 +121,7 @@ function displayGraph() {
                     },
                     scaleLabel: {
                         display: true,
-                        labelString: '# of Sources',
+                        labelString: '# of Sources / Pages',
                         fontSize: 20,
                         fontStyle: "bold"
                     },
