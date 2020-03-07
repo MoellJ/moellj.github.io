@@ -81,6 +81,14 @@ function displayGraph() {
             responsive: true,
             hoverMode: 'index',
             stacked: false,
+            tooltips: {
+                mode: 'index',
+                intersect: false
+            },
+            hover: {
+                mode: 'index',
+                intersect: false
+            },
             title: {
                 display: true,
                 text: 'Studienarbeit Statistiken',
